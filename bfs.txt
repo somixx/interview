@@ -1,0 +1,24 @@
+s.color = GRAY
+s.d = 0
+s.pi = nil
+
+Q = Queue()
+
+for v in V \ {s}:
+  s.color = WHITE
+  s.pi = nil
+  s.d = \infty
+
+Q.enqueue(s)
+
+while not Q.empty:
+  u = Q.pop()
+
+  for v in Adj(v):
+    if v.color == WHITE:
+      v.color = GRAY
+      v.pi = u
+      v.d = u.d + 1
+      Q.enqueue(v)
+
+  u.color = BLACK
