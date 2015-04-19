@@ -1,0 +1,26 @@
+BFS(G, s):
+  # initialize
+  Q = Queue() # fifo
+
+  s.pi = None
+  s.color = GRAY
+  s.d = 0
+
+  for u in G\{s}:
+    s.pi = None
+    s.color = WHITE
+    s.d = INF
+
+  Q.enqueue(s)
+
+  while not Q.empty():
+    u = Q.dequeue()
+
+    for v in Adj[u]:
+      if v.color == WHITE:
+        v.pi = u
+        v.d = u.d + 1
+        v.color = GRAY
+        Q.enqueue(v)
+
+    u.color = BLACK
