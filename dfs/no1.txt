@@ -1,0 +1,25 @@
+DFS(G):
+
+  t = 0
+  for u in G:
+    u.pi = None
+    u.color = WHITE
+
+  for u in G:
+    if u.color == WHITE:
+      DFS_Visit(G, u)
+
+DFS_Visit(G, u):
+  u.color = GRAY
+  t = t + 1
+  u.d = t
+
+  for v in Adj[u]:
+    if v.color == WHITE:
+      v.pi = u
+      DFS_Visit(G, v)
+
+  t = t + 1
+  u.color = BLACK
+  u.f = t
+ 
