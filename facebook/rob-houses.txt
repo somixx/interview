@@ -1,0 +1,13 @@
+#  You are trying to rob houses on a street. Each house has some positive amount of cash. Your goal is to rob houses such that you
+# maximize the total robbed amount. The constraint is once you rob a house you cannot rob a house adjascent to that house. 
+
+values: p_0 ...p_N
+
+key relation for value function:
+
+V[i] = max value for houses 0..i.
+
+V[j+1] = max(V[j], V[j-1] + p_{j+1})   for j>=1
+
+V[0] = p_0
+V[1] = max(p_0, p_1)
